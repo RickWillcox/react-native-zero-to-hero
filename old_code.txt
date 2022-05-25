@@ -1,0 +1,48 @@
+<Text style={styles.text}>My name is {name}</Text>
+      <Text style={styles.text}>The session number is {session.number}</Text>
+      <Text style={styles.text}>Total Count: {count.count}</Text>
+      <Text style={styles.text}>Total Clicks: {count.clicked}</Text>
+      <View style={styles.button}>
+        <Button title="Change name" onPress={changeName}>
+          {' '}
+        </Button>
+      </View>
+      <View style={styles.button}>
+        <Button title="Increment session" onPress={incrementSession}>
+          {' '}
+        </Button>
+      </View>
+      <View style={styles.button}>
+        <Button title="Increment Counter" onPress={incrementCounter}>
+          {' '}
+        </Button>
+      </View>
+      <View style={styles.button}>
+        <Button title="Reset Counter" onPress={resetCounter}>
+          {' '}
+        </Button>
+      </View>
+
+        const [name, setName] = useState('Rick');
+  const [session, setSession] = useState({ number: 0, title: 'state' });
+  const [count, setCount] = useState({ count: 0, clicked: 0 });
+
+  const changeName = () => {
+    if (name === 'Rick') {
+      setName('Cassie');
+    } else {
+      setName('Rick');
+    }
+  };
+
+  const incrementCounter = () => {
+    setCount({ count: count.count + 5, clicked: count.clicked + 1 });
+  };
+
+  const resetCounter = () => {
+    setCount({ count: 0, clicked: 0 });
+  };
+
+  const incrementSession = () => {
+    setSession({ number: session.number + 1, title: 'session' });
+  };
