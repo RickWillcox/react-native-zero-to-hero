@@ -1,12 +1,32 @@
+import React, {useState} from 'react';
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { Linking } from 'react-native-web';
 
 export default function App() {
+  const [name, setName] = useState('Rick');
+  const [session, setSession] = useState({number: 0, title: 'state'});
+
+  const changeName = () => {
+    if (name === 'Rick') {
+      setName('Morty');
+    } else{
+      setName('Rick');
+    }
+  }
+
+  const incrementSession = () => {
+    setSession({number: session.number + 1, title: 'session'});
+  }
+  
+
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Hello World</Text>  
-      <Button title='Zero to Hero' style={styles.text} onPress={()=>{Linking.openURL('https://www.google.com')}}> </Button>
+      <Text style={styles.text}>My name is {name}</Text>  
+      <Text style={styles.text}>The session number is {session.number}</Text>  
+      <Button title='Change name' onPress={changeName}> </Button>
+      <Button title='Increment session' onPress={incrementSession}> </Button>
     </View>
   );
 }
